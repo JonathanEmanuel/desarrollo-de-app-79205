@@ -2,7 +2,7 @@ import { StyleSheet, Modal, View, Text, Button } from "react-native";
 
 
 const ModalTask = ( props) => {
-    const { modalVisible, onCerrar, onFinalizar, id, title, date } = props;
+    const { modalVisible, onCerrar, onFinalizar, item } = props;
 
     return (
         <Modal visible={modalVisible} transparent animationType="fade">
