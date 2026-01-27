@@ -1,11 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
 import Header from "../Components/Header";
+import Search from "../Components/Search";
 import ProductItem from "../Components/ProductItem";
+import allProducts from "../Data/products.json";
 import { colors } from "../Global/colors";
 
 export default function ItemListCategory({ category  }) {
 
+  const [ keyword, setKeyword] = useState("");
+  const [ products, setProducts ] = useState( [])
+
+  useEffect( () => {
+
+    if( category ) { // Si se paso una categoría filtramos por categoría y palabra
+      const products = allProducts.filter( product => product.category === category);
+      const productsFiltered = products.filter( product => product.title.toLowerCase().includes( keyword.toLowerCase() ) );
+      setProducts(productsFiltered);
+
+    } else {
+      const productsFiltered = allProducts.filter( product => product.title.toLowerCase().includes( keyword.toLowerCase() ) );
+      setProducts(productsFiltered);
+    }
+
+  }, [ keyword, category] )
 
   return (
     <View style={styles.screen}>
@@ -15,8 +33,13 @@ export default function ItemListCategory({ category  }) {
         <Pressable style={styles.backBtn}>
           <Text style={styles.backText}>Go back</Text>
         </Pressable>
-        <Text> Lista</Text>
+        <Search onSearch={ setKeyword }/>
 
+        <FlatList 
+          data={products}
+          keyExtractor={ (it) => it.id }
+          renderItem={ ( {item} ) => <ProductItem item={item} /> }
+        />
       </View>
     </View>
   );
