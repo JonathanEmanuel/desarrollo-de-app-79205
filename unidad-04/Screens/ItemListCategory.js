@@ -3,10 +3,10 @@ import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
 import Header from "../Components/Header";
 import Search from "../Components/Search";
 import ProductItem from "../Components/ProductItem";
-import allProducts from "../Data/products.json";
+import allProducts from "../Data/products2.json";
 import { colors } from "../Global/colors";
 
-export default function ItemListCategory({ category  }) {
+export default function ItemListCategory({ category, onGoBack  }) {
 
   const [ keyword, setKeyword] = useState("");
   const [ products, setProducts ] = useState( [])
@@ -30,7 +30,7 @@ export default function ItemListCategory({ category  }) {
       <Header title={"Products"} />
 
       <View style={styles.content}>
-        <Pressable style={styles.backBtn}>
+        <Pressable style={styles.backBtn} onPress={ onGoBack}>
           <Text style={styles.backText}>Go back</Text>
         </Pressable>
         <Search onSearch={ setKeyword }/>
