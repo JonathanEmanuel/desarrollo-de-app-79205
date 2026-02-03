@@ -10,11 +10,10 @@ export default function ItemListCategory({ category, onGoBack  }) {
 
   const [ keyword, setKeyword] = useState("");
   const [ products, setProducts ] = useState([]);
-
   useEffect( () => {
 
     if( category ) { // Si se paso una categoría filtramos por categoría y palabra
-      const products = allProducts.filter( product => product.category === category);
+      const products = allProducts.filter( product => product.category === category.title );
       const productsFiltered = products.filter( product => product.title.toLowerCase().includes( keyword.toLowerCase() ) );
       setProducts(productsFiltered);
 
