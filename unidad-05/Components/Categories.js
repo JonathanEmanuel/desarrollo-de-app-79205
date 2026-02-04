@@ -3,14 +3,14 @@ import CategoryItem from "./CategoryItem";
 import categories from "../Data/categories.json";
 import { colors } from "../Global/colors";
 
-export default function Categories({ onSelectCategory }) {
+export default function Categories({ navigation }) {
   return (
     <View style={styles.container}>
       <FlatList
         data={ categories}
         keyExtractor={ (it) => it.id }
         renderItem={ ( { item }) => (
-          <CategoryItem item={item} onSelect={ onSelectCategory} />
+          <CategoryItem item={item} />
         )}
       />
     </View>

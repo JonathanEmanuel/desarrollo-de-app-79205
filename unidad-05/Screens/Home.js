@@ -3,11 +3,11 @@ import Header from "../Components/Header";
 import Categories from "../Components/Categories";
 import { colors } from "../Global/colors";
 
-export default function Home( {onPickCategory }) {
+export default function Home( { navigation }) {
   return (
     <View style={styles.screen}>
       <Header title="Categories" />
-      <Categories onSelectCategory={onPickCategory} />
+      <Categories navigation={navigation} />
     </View>
   );
 }

@@ -1,9 +1,9 @@
 import { Pressable, Text, StyleSheet } from "react-native";
 import { colors } from "../Global/colors";
 
-export default function CategoryItem({ item, onSelect }) {
+export default function CategoryItem({ item  }) {
   return (
-    <Pressable style={styles.card} onPress={() => onSelect(item)}>
+    <Pressable style={styles.card} >
       <Text style={styles.text}>{item.title}</Text>
     </Pressable>
   );

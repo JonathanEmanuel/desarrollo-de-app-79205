@@ -1,24 +1,12 @@
-import { useState } from "react";
-import Home from "./Screens/Home";
-import ItemListCategory from "./Screens/ItemListCategory";
+import { NavigationContainer } from '@react-navigation/native'
+import Navigator from "./navigation/Navigator";
+
 
 export default function App() {
-  const [ activeScreen, setActiveScreen] = useState('HOME');
-  const [ selectedCategory, setSelectedCategory] = useState(null)
-
-  const handlePickCategory = ( cat ) => {
-    setSelectedCategory( cat );
-    setActiveScreen('PRODUCTS');
-  }
-
-  const handleGoBack = () => {
-    setActiveScreen('HOME');
-    setSelectedCategory(null);
-  }
-
-  return activeScreen === 'HOME' ? ( 
-      <Home onPickCategory={ handlePickCategory} /> 
-    ) : ( 
-      <ItemListCategory category={ selectedCategory } onGoBack={ handleGoBack} /> 
+ 
+  return ( 
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
     )
 }
