@@ -37,7 +37,7 @@ export default function TabNavigator() {
       })}
     >
       <Tab.Screen name="Shop" component={ShopStack} />
-      <Tab.Screen name="Cart" component={CartStack} />
+      <Tab.Screen name="Carts" component={CartStack} />
       <Tab.Screen name="Orders" component={OrdersStack} />
     </Tab.Navigator>
   );
